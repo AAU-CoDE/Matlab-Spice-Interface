@@ -1,0 +1,36 @@
+* C:\MSPICE_IWIPP\Actual_netlist_try_216.asc
+Rg Source_GDOUT Rgp {Rg} 
+Vg GDH_SINK 0 PWL(0 0 605n 0 625n 15 1365n 15 1385n 0) 
+Lload L_SOURCE DCPLUS_LLOAD {Lload} 
+Vtemp Utmp 0 25 
+Rcgat Rgp Rgp1 1n 
+Cg Rgp1 0 {Cg} 
+Cgat GDH_SINK 0 10n 
+XTL LOWDRN_SOURCE Source_TG Kelvin_Source ISHUNT_SOURCE Utmp Utmp C3M0030090K 
+XTU DCPLUS_TOPFET Ts Ts TOPSRC_SINK Utmp Utmp C3M0030090K 
+Cdc1 DCPLUS_BCAP1 DCMIN_BIGCAP 4.7u 
+Lgext Rgp Sink_TG 5n 
+Rvp DCPLUS_BCAP DCPLUS_BCAP1 15m 
+Rvm DCPLUS_SCAP DCPLUS_SCAP1 1m 
+Rprobe VMEAS_SOURCE 0 10MEG 
+Cprobe VMEAS_SOURCE 0 12p 
+Cdc2 DCPLUS_SCAP1 DCMIN_SCAP 10n 
+Vdc1 DCPLUS_BCAP DCMIN_BIGCAP {V_dc} 
+XParas DCPLUS_LLOAD DCPLUS_SCAP DCPLUS_TOPFET Source_GDOUT ISHUNT_SINK DCMIN_SCAP Kelvin_Source ISHUNT_SOURCE Source_TG L_SOURCE LOWDRN_SOURCE VMEAS_SOURCE GDH_Source DCPLUS_BCAP GDH_Source DCMIN_BIGCAP 0 ISHUNT_SINK Sink_TG TOPSRC_SINK GDH_SINK DPT_PCB3_1MHz 
+.params Rg = 7 V_dc = 400 Lload = 1.000000e-05 Rgnd = 1000000 Cg = 7.000000e-09
+.tran 1.000000e-11 1.000000e-05 1.000000e-11 
+.options method = trap 
+.options gmin = 1e-12 
+.options abstol = 1e-12 
+.options reltol = 0.0025 
+.options chgtol = 1e-14 
+.options trtol = 1 
+.options vntol = 1e-07 
+.options sstol = 0.001 
+.options cshunt = 1e-15 
+.options mindeltagmin = 1e-05 
+.include C3M0030090K.lib
+.include DPT_PCB3_1MHz.cir
+ 
+.backanno
+.end
