@@ -1,4 +1,4 @@
-* C:\!MSPICE_ForPublication\Actual_netlist_try_216.asc
+* C:\!MSPICE_ForPublication\TestNet_Lite.asc
 Rgnd 0  T1MID  {Rgnd}
 Vg GDH_SINK  0  PWL(0 0 605n 0 645n 15 1365n 15 1405n 0)
 Lload DCPLUS_LLOAD  L_SOURCE  {Lload}
@@ -14,7 +14,6 @@ Rprobe VMEAS_SOURCE  0  10MEG
 Cprobe VMEAS_SOURCE  0  10p
 Cdc2 DCPLUS_SCAP1  DCMIN_SCAP  100n
 Vdc1 DCPLUS_BCAP  DCMIN_BIGCAP  {V_dc}
-XParas DCPLUS_LLOAD  DCPLUS_SCAP  DCPLUS_TOPFET  Source_GDOUT  ISHUNT_SINK  DCMIN_SCAP  Kelvin_Source  ISHUNT_SOURCE  Source_TG  L_SOURCE  LOWDRN_SOURCE  VMEAS_SOURCE  GDH_Source  DCPLUS_BCAP  GDH_Source  DCMIN_BIGCAP  0  ISHUNT_SINK  Sink_TG  TOPSRC_SINK  GDH_SINK  DPT_PCB3_1_800kHz
 .params Name = Value  Name2 = Value2 
 .tran 1.000000e-09 5.000000e-06 1.000000e-09 
 .options method = trap 
@@ -29,7 +28,7 @@ XParas DCPLUS_LLOAD  DCPLUS_SCAP  DCPLUS_TOPFET  Source_GDOUT  ISHUNT_SINK  DCMI
 .options mindeltagmin = 1e-05 
 .include C3M0030090K.lib
 .include DPT_PCB3_1_800kHz.cir
- .ic I(Lload)=1
+.ic I(Lload)=1 
  
 .backanno
 .end

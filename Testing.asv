@@ -1,0 +1,18 @@
+% Function for makeNetlis testing
+
+%Provide values for composing the netlist
+
+% Variant lite: no ICs from old sims
+adapticString = ' .ic I(Lload)=10';
+Rg = 10;
+
+Dirs = setDirectories("XVIIx64.exe"); %In case the LTSPICE is not on drive C, you have to manually change it.  //maybe a drive name in input??
+spicePath = char (Dirs(1)); % This is the path to your LT Spice installation
+filePath = char(Dirs(2)); %This is the path where you want the netlist, functions and simulation outputs to reside
+netPath = char(Dirs(3)); % This is same as file path but all \ are replaced by \\ because of some Matlab issue in writing Netlist.
+
+fileName = 'Actual_netlist_try_216';
+
+% Variant full: ICs from older sims present
+
+% IC pattern match check: Conflict between two ICs (adaptic vs hard coded)
