@@ -21,9 +21,9 @@ if isfile(outputfile)
 else
 end
 
-string = sprintf('start "LTSpice" "%s" -b "%s%s.net" -alt',spicePath, filePath, filename);
-
-dos(string); %running starts
+string = sprintf('start "LTSpice" "%s" -b "%s%s.net" -alt ',spicePath, filePath, filename);
+%string = sprintf('wmic process call create "LTSpice" "%s" "%s%s.net" | find "ProcessId"',spicePath, filePath, filename);
+[s,o] = dos(string) %running starts
 
 z=1;
 killcheck = toc;

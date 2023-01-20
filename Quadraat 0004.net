@@ -1,0 +1,44 @@
+* C:\Users\QT58TK\OneDrive - Aalborg Universitet\Desktop\!Balancing current sharing Janus\OneDrive_2022-12-06\Simulation 2 adjusted bondwires\Quadraat 0004.asc
+XQ1 N002 P001 N006 Tj CPM2-1200-0160B
+RG1 P002 N010 {RG}
+XU1 P003 P004 P005 P006 N022 NC_01 N006 NC_02 N007 NC_03 N008 NC_04 N009 N011 N013 N015 N017 P001 P007 P008 P009 P002 P010 P011 P012 N021 P013 P014 P015 P016 P017 P018 P019 P020 N002 N003 N004 N005 VDC 0 N010 N012 N014 N016 N019 N020 N001 Quadraat
+RG2 P010 N012 {RG}
+D1 P020 P006 CPW41200S010B
+D2 P019 P005 CPW41200S010B
+D3 P018 P004 CPW41200S010B
+D4 P017 P003 CPW41200S010B
+RG3 P011 N014 {RG}
+RG4 P012 N016 {RG}
+RS1 P013 N011 {RS}
+RS2 P014 N013 {RS}
+RS3 P015 N015 {RS}
+RS4 P016 N017 {RS}
+V1 VDC 0 650
+I1 0 N001 40
+VG N018 N020 PWL(0 -5 {ton} -5 {ton+1n} 20 {toff} 20 {toff+1n} -5 {tend} -5)
+RG N018 N019 12
+VTj Tj 0 25
+XQ2 N003 P007 N007 Tj CPM2-1200-0160B
+XQ3 N004 P008 N008 Tj CPM2-1200-0160B
+XQ4 N005 P009 N009 Tj CPM2-1200-0160B
+Cout 0 N001 10p
+.model D D
+.lib C:\Users\QT58TK\OneDrive - Aalborg Universitet\Documents\LTspiceXVII\lib\cmp\standard.dio
+.tran {tend}
+.lib CPM2-1200-0160B.lib
+.lib Cree Power CPW4 Bare Die SPICE Model Library.lib
+.param RG 5m
+.param RS 1.5
+.param ton 100n
+.param toff 600n
+.param tend 1000n
+.lib Quadraat 0004 [4.0 4.0 4.0 4.0].cir
+* .lib Quadraat 0004 [7.0 6.0 5.0 4.0].cir
+*Solver parameters selection; 1=detailed, 2=loose
+.options method=Gear gmin={gmin} abstol={abstol} reltol={reltol}
+.param gmin table(solver_settings,1,1e-12,2,1e-11)
+.param abstol table(solver_settings,1,1e-11,2,1e-10)
+.param reltol table(solver_settings,1,0.005,2,0.05)
+.param solver_settings 2
+.backanno
+.end

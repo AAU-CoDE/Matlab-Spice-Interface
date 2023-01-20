@@ -1,7 +1,7 @@
 function changed = adaptOptions(Out, options)
 % This is a function adapting the circuit element values if output parameters
 % calculated are NaN
-Check = isnan(Out); % find if there are any NaNs
+Check = sum(isnan([Out(:).sig])); % find if there are any NaNs
 
 if sum(Check) ~= 0 % if any parameter returned Nan, run the code
 

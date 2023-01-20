@@ -1,5 +1,5 @@
-function tranString = tranSim( maxstep, endtime, savingStart)
+function tranString = tranSim(endtime)
 
-tranString = sprintf('.%s %s %s %s %s %s', 'tran', maxstep, endtime, savingStart);
+tranString = sprintf('.%s %s ', 'tran',  endtime);
 
 end

@@ -72,8 +72,8 @@ end
 %% II: Check for derivatives to see if time was ok (tbd)
 
 %% IV: Compose the .nodeset and .ic strings (nodeset just to check)
-%adapticString = sprintf('.ic');
-adapticString = sprintf('.option noopiter \r\n.option itl6 = 25 \r\n.ic');
+adapticString = sprintf('.option noopiter \r\n .ic');
+%adapticString = sprintf('');
 %adapticString = sprintf('.option noopiter \r\n .option gminsteps = 0 \r\n .option itl6 = 0 \r\n.ic');
 
 for n = 1:length(V)

@@ -1,0 +1,45 @@
+%% Top level for running optimisation, sweeps, data handling etc
+% Interface related at this level:
+% - getclosestIC function fetching the closest saved adaptICstring based on the
+% parameter distance coming soon
+% - SweepInfo settings if there's need for changes between simulations
+%   - SweepInfo.killtime sets time limit per simulation
+%   - SweepInfo.endtime sets the simulation length
+%   - SweepInfo.m1it sets the iteration number for M1 convergence help
+%   - SweepInfo.m2it sets the iteration number for M2 convergence help
+%   - SweepInfo.m3 sets whether new initial conditions are returned
+% - Info handling / for pushing straight into SweepInfo
+%   - Any diagnostic needed for setting Sweep Infos
+% - Waveform readout when not using resimulation options 
+% - Saving initial conditions, useful for quick reruns when coming back to
+% the project or verifying
+
+%clear all;
+%close all;
+%clc;
+
+
+
+
+Rs = 1.5;
+Rg = 5e-3;
+adapticString = ' ';
+SweepInfo.endtime = 1000e-9;
+SweepInfo.killtime = 600;
+SweepInfo.m1it = 0;
+SweepInfo.m2it = 0;
+SweepInfo.m3 = 1;
+tic %must have for functions depending on it for timeouts
+
+
+
+[Out, newIC, Info] = LTSM_v5 ( [Rg,Rs],adapticString,SweepInfo);
+
+        
+
+
+time = toc;
+
+%end
+
+

@@ -1,0 +1,23 @@
+CPM2-1200-0160B     nmos_die            Q1                  000     000    0
+{RG}                europeanresistor    RG1                 000     000    0
+Quadraat            quadraat 0004       U1                  000     000    0
+{RG}                europeanresistor    RG2                 000     000    0
+CPW41200S010B       cpw41200s010b       D1                  000     000    0
+CPW41200S010B       cpw41200s010b       D2                  000     000    0
+CPW41200S010B       cpw41200s010b       D3                  000     000    0
+CPW41200S010B       cpw41200s010b       D4                  000     000    0
+{RG}                europeanresistor    RG3                 000     000    0
+{RG}                europeanresistor    RG4                 000     000    0
+{RS}                europeanresistor    RS1                 000     000    0
+{RS}                europeanresistor    RS2                 000     000    0
+{RS}                europeanresistor    RS3                 000     000    0
+{RS}                europeanresistor    RS4                 000     000    0
+650                 voltage             V1                  000     000    0
+40                  current             I1                  000     000    0
+PWL(0 -5 {ton} -5 {ton+1n} 20 {toff} 20 {toff+1n} -5 {tend} -5)voltage             VG                  000     000    0
+12                  europeanresistor    RG                  000     000    0
+25                  voltage             VTj                 000     000    0
+CPM2-1200-0160B     nmos_die            Q2                  000     000    0
+CPM2-1200-0160B     nmos_die            Q3                  000     000    0
+CPM2-1200-0160B     nmos_die            Q4                  000     000    0
+10p                 cap                 Cout                000     000    0

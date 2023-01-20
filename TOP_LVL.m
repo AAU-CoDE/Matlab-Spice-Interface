@@ -1,10 +1,16 @@
 %% Top level for running optimisation, sweeps, data handling etc
 % Interface related at this level:
 % - getclosestIC function fetching the closest saved adaptICstring based on the
-% parameter distance
+% parameter distance coming soon
 % - SweepInfo settings if there's need for changes between simulations
-% - Info handling / pushing straight into SweepInfo
-% - Waveform readout when not using resimulation options
+%   - SweepInfo.killtime sets time limit per simulation
+%   - SweepInfo.endtime sets the simulation length
+%   - SweepInfo.m1it sets the iteration number for M1 convergence help
+%   - SweepInfo.m2it sets the iteration number for M2 convergence help
+%   - SweepInfo.m3 sets whether new initial conditions are returned
+% - Info handling / for pushing straight into SweepInfo
+%   - Any diagnostic needed for setting Sweep Infos
+% - Waveform readout when not using resimulation options 
 % - Saving initial conditions, useful for quick reruns when coming back to
 % the project or verifying
 
@@ -13,45 +19,29 @@
 %clc;
 
 
-Rg = [10,30];
-Rg2 = 2:10:100;
 
-I_Load = 10 ;
 
-% for x = 1:10
-%     Rg2 = Rgat2(x);
-adapticString = ' .ic I(Lload)=10';
-%adapticString = EzRerun(10).IC;
-SweepInfo.endtime = 5e-6;
-SweepInfo.killtime = 120;
+Rs = 1.5;
+Rg = 5e-3;
+adapticString = ' ';    %starting .ic
+SweepInfo.endtime = 1000e-9;  %Transient simulation end time
+SweepInfo.killtime = 600;   %Maximum time allowed for a simulation run [s]
+SweepInfo.m1it = 0; %Max iterations of first convergence improv. method
+SweepInfo.m2it = 0; %Max iterations of second convergence improv. method
+SweepInfo.m3 = 0;   %Enable ic. adaptation
 tic %must have for functions depending on it for timeouts
 
 
-for i = 1:length(Rg)
-    Rgat = Rg(i);
-        if ((i == 1)) == 1
-            select = [0 1 1];
-        else
-            select = [0 1 1];
-        end
-        [Out, newIC, Info] = LTSM_v4 ( [Rgat],adapticString,SweepInfo);
-        tr(i) = Out(1);
-        max_Vds(i) = Out(2);
-        min_Vds(i) = Out(3);
-        ind_Vd = find(strcmp(result.variable_name_list,'V(vmeas_source)' ));
-        Vds(i).v = result.variable_mat(ind_Vd,:);
-        Vds(i).t = result.time_vect;
-        EzRerun(i).IC = newIC;
 
-        adapticString = newIC;
+[Out, newIC, Info] = LTSM_v5 ( [Rg,Rs],adapticString,SweepInfo);
 
-
-
-
-        count_it = ['I finished iteration for ', num2str(Rg(i)), ' Rg value '];
-        disp(count_it)
-
-end
+        
+figure
+hold on
+plot(Out(1).sig(:),Out(2).sig(:),Out(1).sig(:),Out(3).sig(:),Out(1).sig(:),Out(4).sig(:), Out(1).sig(:),Out(5).sig(:) )
+xlabel('time, s')
+ylabel('I_{d}, A')
+legend('T1','T2','T3','T4')
 time = toc;
 
 %end

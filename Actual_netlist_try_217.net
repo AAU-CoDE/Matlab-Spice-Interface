@@ -1,0 +1,37 @@
+* C:\!MSPICE_JANUS_Optimisation\Actual_netlist_try_217.asc
+XQ1 N002  P001  N006  Tj  CPM2-1200-0160B
+XQ2 N003  P007  N007  Tj  CPM2-1200-0160B
+XQ3 N004  P008  N008  Tj  CPM2-1200-0160B
+XQ4 N005  P009  N009  Tj  CPM2-1200-0160B
+D1 P020  P006  CPW41200S010B
+D2 P019  P005  CPW41200S010B
+D3 P018  P004  CPW41200S010B
+D4 P017  P003  CPW41200S010B
+Rg N018  N019  12
+Rg1 P002  N010  {Rg1}
+Rg2 P010  N012  {Rg1}
+Rg3 P011  N014  {Rg1}
+Rg4 P012  N016  {Rg1}
+RS1 P013  N011  {RS}
+RS2 P014  N013  {RS}
+RS3 P015  N015  {RS}
+RS4 P016  N017  {RS}
+XU1 P003  P004  P005  P006  N022  NC_01  N006  NC_02  N007  NC_03  N008  NC_04  N009  N011  N013  N015  N017  P001  P007  P008  P009  P002  P010  P011  P012  N021  P013  P014  P015  P016  P017  P018  P019  P020  N002  N003  N004  N005  VDC  0  N010  N012  N014  N016  N019  N020  N001  Quadraat
+V1 VDC  0  650
+I1 0  N001  40
+VG N018  N020  PWL(0 -5 {ton} -5 {ton+1n} 20 {toff} 20 {toff+1n} -5 {tend} -5)
+VTj Tj  0  25
+Cout 0  N001  10p
+.params RG1 = 5.000000e-03  RS = 1.500000e+00  ton = 1.000000e-07  toff = 6.000000e-07  tend = 1.000000e-06 
+.tran 1.000000e-06 
+.options method = gear 
+.options gmin = 1e-12 
+.options abstol = 1e-12 
+.options reltol = 0.0005 
+.include CPM2-1200-0160B.lib
+.include Cree Power CPW4 Bare Die SPICE Model Library.lib
+.include Quadraat 0004 [4.0 4.0 4.0 4.0].cir
+ 
+ 
+.backanno
+.end

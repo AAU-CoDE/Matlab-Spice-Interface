@@ -1,8 +1,9 @@
 function libs = myLibs()
 
-libs(1) = makeLib('C3M0030090K', 'lib');
-%libs(2) = makeLib('Cree Power C4D Packaged SPICE Model Library', 'lib');
-libs(2) = makeLib('DPT_PCB3_1_800kHz', 'cir');
+libs(1) = makeLib('CPM2-1200-0160B', 'lib');
+libs(2) = makeLib('Cree Power CPW4 Bare Die SPICE Model Library', 'lib');
+libs(3) = makeLib('Quadraat 0004 [4.0 4.0 4.0 4.0]', 'cir');
+%libs(4) = makeLib('D D', 'model');
 
 
 end

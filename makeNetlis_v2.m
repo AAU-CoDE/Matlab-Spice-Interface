@@ -5,7 +5,7 @@ function netList = makeNetlis_v2(components,options,libraries, ICs, analysisStri
 %  Part 3: Compose and save the netlist.
 
 %%prepare strings from structures
-global paramString;
+%global paramString;
 global fileName
 
 %Component string
